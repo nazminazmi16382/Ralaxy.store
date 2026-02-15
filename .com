@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ralaxy Store • Kontak WhatsApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        /* background biru muda lembut */
+        body {
+            background: radial-gradient(circle at 10% 30%, #d0eaff, #b5dbfd);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* kartu utama putih */
+        .store-card {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 48px 48px 36px 36px;
+            box-shadow: 0 25px 40px -12px #1f4e7c;
+            overflow: hidden;
+            padding: 35px 40px 45px 40px;
+            border: 2px solid rgba(255,255,255,0.7);
+        }
+
+        /* ---------- HEADER dengan tautan grup (biru & putih) ---------- */
+        .shop-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #b9dfff;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            background: #c2e2ff;
+            width: 60px;
+            height: 60px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 0 #9cc0e5;
+        }
+
+        .shop-name {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #0e4b73;
+            letter-spacing: -0.5px;
+        }
+        .shop-name span {
+            font-weight: 300;
+            color: #3682b7;
+            font-size: 1.8rem;
+        }
+
+        /* tautan grup WhatsApp (biru & putih) */
+        .whatsapp-group-link {
+            background: #dbeefe;
+            padding: 12px 30px;
+            border-radius: 60px;
+            border: 2px solid white;
+            box-shadow: 0 7px 0 #b3cfec;
+            transition: 0.1s;
+        }
+        .whatsapp-group-link a {
+            text-decoration: none;
+            color: #004466;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .whatsapp-group-link:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #b3cfec;
+        }
+        .wa-icon { font-size: 1.8rem; }
+
+        /* ---------- GRID NOMOR WHATSAPP (mengganti produk) ---------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin: 40px 0 20px;
+        }
+
+        .contact-card {
+            background: #f3faff;  /* putih dengan sentuhan biru */
+            border-radius: 32px;
+            padding: 28px 18px 24px;
+            box-shadow: 0 18px 25px -14px #2875a8;
+            border: 2px solid white;
+            transition: 0.2s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-card:hover {
+            transform: scale(1.02);
+            background: #ffffff;
+            border-color: #9ac9f0;
+        }
+
+        /* avatar / ikon WA bulat */
+        .wa-avatar {
+            background: #0194fe;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            border: 4px solid white;
+            box-shadow: 0 10px 0 #0166af;
+            font-size: 38px;
+        }
+
+        /* label "WhatsApp" */
+        .contact-label {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #145980;
+            letter-spacing: 0.3px;
+            background: #daedff;
+            padding: 6px 22px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            border: 1px solid white;
+        }
+
+        /* NOMOR WHATSAPP WARNA BIRU (sesuai permintaan) */
+        .wa-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #004a99;              /* biru tua terang */
+            background: #e3f0ff;
+            padding: 16px 18px;
+            border-radius: 60px;
+            width: 100%;
+            text-align: center;
+            border: 2px dashed #73b2ff;
+            line-height: 1.3;
+            word-break: break-word;
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.02);
+            margin: 5px 0 8px;
+        }
+
+        /* teks bantuan kecil */
+        .contact-note {
+            color: #366f99;
+            margin-top: 15px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.8);
+            padding: 5px 18px;
+            border-radius: 60px;
+        }
+
+        /* ---------- LINK GRUP (footer besar) ---------- */
+        .group-footer {
+            margin-top: 55px;
+            background: #e0f0ff;
+            border-radius: 90px;
+            padding: 22px 30px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border: 3px solid white;
+            box-shadow: 0 10px 0 #b2cfec;
+        }
+
+        .group-footer .text-muted {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #0f4d75;
+        }
+
+        .group-footer .big-wa-link {
+            background: #0f6aa7;
+            padding: 16px 40px;
+            border-radius: 60px;
+            transition: 0.15s;
+            box-shadow: 0 7px 0 #064268, 0 8px 18px #033653;
+        }
+        .group-footer .big-wa-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .group-footer .big-wa-link:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #064268, 0 8px 18px #033653;
+        }
+
+        /* footer hak cipta */
+        .copyright {
+            text-align: center;
+            margin-top: 35px;
+            color: #256f9e;
+            font-weight: 400;
+        }
+
+        /* responsif */
+        @media (max-width: 600px) {
+            .store-card {
+                padding: 20px;
+            }
+            .shop-name {
+                font-size: 1.8rem;
+            }
+            .wa-number {
+                font-size: 1.4rem;
+            }
+            .group-footer {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="store-card">
+    <!-- header dengan tautan grup (biru muda/putih) -->
+    <div class="shop-header">
+        <div class="logo-area">
+            <div class="logo-icon">🛒</div>
+            <div class="shop-name">Ralaxy <span>store</span></div>
+        </div>
+        <!-- teks link grup ralaxy store (header) -->
+        <div class="whatsapp-group-link">
+            <a href="https://chat.whatsapp.com/HwsTPkZ04zWCtL7OpwQeAQ?mode=gi_t" target="_blank" rel="noopener noreferrer">
+                <span class="wa-icon">📲</span> Grup Ralaxy Store
+            </a>
+        </div>
+    </div>
+
+    <!-- pengantar: kontak WhatsApp -->
+    <div style="background: #ddeeff; padding: 8px 24px; border-radius: 90px; display: inline-block; margin-bottom: 10px;">
+        <span style="color: #005b99; font-weight: 500;">🔹 silahkan hubungi nomor di bawah ini 🔹</span>
+    </div>
+
+    <!-- GRID NOMOR WHATSAPP (menggantikan product image) TAMPIL BIRU -->
+    <div class="contact-grid">
+        <!-- card 1 -->
+        <div class="contact-card">
+            <div class="wa-avatar">💬</div>
+            <div class="contact-label">WhatsApp 1</div>
+            <!-- NOMOR BIRU sesuai permintaan +62 877-1746-8160 -->
+            <div class="wa-number">+62 877-1746-8160</div>
+            <div class="contact-note">🕒 respon cepat (08.00 - 21.00)</div>
+        </div>
+        <!-- card 2 (opsional, untuk jaga-jaga bisa nomor yang sama atau staf kedua) 
+             Saya tampilkan nomor yang sama agar konsisten, jika ingin satu saja grid tetap rapi -->
+        <div class="contact-card">
+            <div class="wa-avatar">📞</div>
+            <div class="contact-label">WhatsApp 2</div>
+            <div class="wa-number">+62 877-1746-8160</div>
+            <div class="contact-note">⭐ cadangan / order via WA</div>
+        </div>
+        <!-- card 3 – boleh juga dengan nomor yang sama, memperkuat kesan -->
+        <div class="contact-card">
+            <div class="wa-avatar">✉️</div>
+            <div class="contact-label">Customer care</div>
+            <div class="wa-number">+62 877-1746-8160</div>
+            <div class="contact-note">📱 tersedia WhatsApp Business</div>
+        </div>
+        <!-- card 4 – agar grid tetap seimbang dan semua menampilkan nomor biru -->
+        <div class="contact-card">
+            <div class="wa-avatar">🤝</div>
+            <div class="contact-label">Ralaxy admin</div>
+            <div class="wa-number">+62 877-1746-8160</div>
+            <div class="contact-note">📍 fast response, langsung owner</div>
+        </div>
+    </div>
+
+    <!-- penjelasan bahwa gambar produk diganti dengan nomor wa biru -->
+    <p style="color: #3173a5; margin: 20px 0 0 15px; font-style: italic; background: rgba(255,255,255,0.7); padding: 6px 25px; border-radius: 60px; display: inline-block;">
+        ⚡ sekarang nomor WhatsApp tampil biru, siap di klik / salin
+    </p>
+
+    <!-- TAUTAN UTAMA GRUP RALAXY STORE (footer besar) -->
+    <div class="group-footer">
+        <span class="text-muted">💙 RALAXY STORE OFFICIAL GROUP 💙</span>
+        <div class="big-wa-link">
+            <a href="https://chat.whatsapp.com/HwsTPkZ04zWCtL7OpwQeAQ?mode=gi_t" target="_blank" rel="noopener noreferrer">
+                <span>🔹</span> klik: grup ralaxy store <span>🔸</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- footer dengan nomor lagi (biru) -->
+    <div class="copyright">
+        🌐 hubungi langsung · <span style="color: #004a99; font-weight: 700;">+62 877-1746-8160</span> · biru di atas putih
+    </div>
+</div>
+
+<!-- catatan kecil: semua nomor WA telah diubah ke teks biru, tanpa gambar produk -->
+</body>
+</html>
